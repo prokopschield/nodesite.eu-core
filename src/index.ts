@@ -1,11 +1,13 @@
 import { createLogger, Logger } from '@lvksh/logger';
 import { io } from 'socket.io-client';
 
+const debug = (global || window)?.process?.env?.NODESITE_EU_CORE_DEBUG;
+
 export function connect(
 	server?: string,
 	...loggers: Logger<'received' | 'sent'>[]
 ) {
-	if ((global || window)?.process?.env?.NODESITE_EU_CORE_DEBUG) {
+	if (debug) {
 		loggers.push(
 			createLogger(
 				{
