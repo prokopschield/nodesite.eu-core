@@ -2,6 +2,9 @@ import { createLogger, Logger } from '@lvksh/logger';
 import { io } from 'socket.io-client';
 
 const debug = (global || window)?.process?.env?.NODESITE_EU_CORE_DEBUG;
+const endpoint =
+	(global || window)?.process?.env?.NODESITE_EU_CORE_ENDPOINT ||
+	`wss://nodesite.eu:20122`;
 
 export function connect(
 	server?: string,
@@ -23,7 +26,7 @@ export function connect(
 			)
 		);
 	}
-	const socket = io(server || `wss://nodesite.eu:20122`);
+	const socket = io(server || endpoint);
 	if (loggers.length) {
 		socket.onAny((event: string, ...args) =>
 			loggers.forEach((logger) => logger.received(event, ...args))
