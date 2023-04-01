@@ -1,7 +1,7 @@
 {
 	"name": "nodesite.eu-core",
 	"description": "Only the nodesite.eu API connection, without the framework.",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"main": "lib/index.js",
 	"author": "Prokop Schield",
 	"devDependencies": {
@@ -11,6 +11,6 @@
 	"license": "GPL-3.0-or-later",
 	"dependencies": {
 		"@lvksh/logger": "1.5.2",
-		"socket.io-client": "^4.5.4"
+		"socket.io-client": "^4.6.1"
 	}
 }
