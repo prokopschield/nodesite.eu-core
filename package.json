@@ -8,6 +8,6 @@
 	"license": "GPL-3.0-or-later",
 	"dependencies": {
 		"@lvksh/logger": "1.5.2",
-		"socket.io-client": "^4.6.2"
+		"socket.io-client": "^4.7.1"
 	}
 }
