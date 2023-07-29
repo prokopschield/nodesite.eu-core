@@ -1,9 +1,9 @@
 import { createLogger, Logger } from '@lvksh/logger';
 import { io } from 'socket.io-client';
 
-const debug = (global || window)?.process?.env?.NODESITE_EU_CORE_DEBUG;
+const debug = globalThis?.process?.env?.NODESITE_EU_CORE_DEBUG;
 const endpoint =
-	(global || window)?.process?.env?.NODESITE_EU_CORE_ENDPOINT ||
+	globalThis?.process?.env?.NODESITE_EU_CORE_ENDPOINT ||
 	`wss://nodesite.eu:20122`;
 
 export function connect(
@@ -15,11 +15,11 @@ export function connect(
 			createLogger(
 				{
 					received:
-						(global || window)?.process?.env
-							?.NODESITE_EU_CORE_DEBUG_REC || 'nodesite.eu -> ',
+						globalThis?.process?.env?.NODESITE_EU_CORE_DEBUG_REC ||
+						'nodesite.eu -> ',
 					sent:
-						(global || window)?.process?.env
-							?.NODESITE_EU_CORE_DEBUG_SENT || 'nodesite.eu <- ',
+						globalThis?.process?.env?.NODESITE_EU_CORE_DEBUG_SENT ||
+						'nodesite.eu <- ',
 				},
 				{},
 				console.error
