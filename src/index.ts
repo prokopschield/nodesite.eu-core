@@ -46,6 +46,8 @@ export function connect(
 
 export default connect;
 
+declare const module: any;
+
 if (typeof module === 'object') {
 	Object.defineProperties(connect, {
 		connect: { get: () => connect },
