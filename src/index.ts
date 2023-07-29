@@ -36,7 +36,9 @@ export function connect(
 		Object.assign(socket, {
 			emit: (event: string, ...args: any[]) => {
 				emit_real.call(socket, event, ...args);
+
 				loggers.forEach((logger) => logger.sent(event, ...args));
+
 				return socket;
 			},
 		});
@@ -53,5 +55,6 @@ if (typeof module === 'object') {
 		connect: { get: () => connect },
 		default: { get: () => connect },
 	});
+
 	Object.assign(module, { exports: connect });
 }
