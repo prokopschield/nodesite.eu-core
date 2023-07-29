@@ -1,10 +1,11 @@
 import { createLogger, Logger } from '@lvksh/logger';
 import { io } from 'socket.io-client';
 
-const debug = globalThis?.process?.env?.NODESITE_EU_CORE_DEBUG;
+const { process } = globalThis as any;
+
+const debug = process?.env?.NODESITE_EU_CORE_DEBUG;
 const endpoint =
-	globalThis?.process?.env?.NODESITE_EU_CORE_ENDPOINT ||
-	`wss://nodesite.eu:20122`;
+	process?.env?.NODESITE_EU_CORE_ENDPOINT || `wss://nodesite.eu:20122`;
 
 export function connect(
 	server?: string,
@@ -15,10 +16,10 @@ export function connect(
 			createLogger(
 				{
 					received:
-						globalThis?.process?.env?.NODESITE_EU_CORE_DEBUG_REC ||
+						process?.env?.NODESITE_EU_CORE_DEBUG_REC ||
 						'nodesite.eu -> ',
 					sent:
-						globalThis?.process?.env?.NODESITE_EU_CORE_DEBUG_SENT ||
+						process?.env?.NODESITE_EU_CORE_DEBUG_SENT ||
 						'nodesite.eu <- ',
 				},
 				{},
